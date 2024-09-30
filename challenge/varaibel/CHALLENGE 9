@@ -1,0 +1,21 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+int main() {
+    float x1,x2,y1,y2,z1,z2;
+    printf("espace,x1");
+    scanf("%f",x1);
+    printf("espace x2");
+    scanf("%f",x2);
+    printf("aspace,y1");
+    scanf("%f",y1);
+    printf("espace y2");
+    scanf("%f",y2);
+     printf("aspace,z1");
+    scanf("%f",z1);
+    printf("espace z2");
+    scanf("%f",z2);
+    sqrt=(pow(x2-x1,2) + pow(y2-y1,2) + pow(z2-z1,2));
+
+           return 0;
+}

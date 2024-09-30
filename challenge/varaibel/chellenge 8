@@ -1,0 +1,18 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+int main() {
+    float a,b,c,gm;
+    printf("nomber a");
+    scanf("%f",&a);
+    printf("nomber b");
+    scanf("%f",&b);
+    printf("nomber c");
+    scanf("%f",&c);
+    gm=pow(a * b * c,1/6);
+   printf("mg %f",gm);
+    return 0;
+}
+
+
+

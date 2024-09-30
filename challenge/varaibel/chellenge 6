@@ -1,0 +1,19 @@
+#include <stdio.h>
+#include <stdlib.h>
+int main() {
+float a,b,H,D,Y,V;
+printf("entre a");
+scanf("%f",&a);
+printf("entre b");
+scanf("%f",&b);
+H=a+b;
+D=a-b;
+Y=a*b;
+V=a/b;
+printf("a+b=%f",H);
+printf("a-b=%f",D);
+printf("a*b=%f",Y);
+printf("a/b=%f",V);
+return 0;
+}
+

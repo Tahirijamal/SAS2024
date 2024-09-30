@@ -1,0 +1,37 @@
+int main() {
+int annees;
+int mois;
+int jour;
+int heures;
+int minutes;
+int secondes;
+int choix;
+printf("le nembre des annees : ");
+scanf("%d",&annees);
+printf("pour convertir en mois tapes 1 \n");
+printf("pour convertir en jour tapes 2 \n");
+printf("pour convertir en heurs tapes 3 \n");
+printf("pour convertir en minutes tapes 4 \n");
+
+printf("pour convertir en secondes tapes 5 \n");
+scanf("%d",&choix);
+switch(choix){
+case 1:
+printf("%d mois",annees*12);
+    break;
+case 2:
+  printf("%d jour",annees*365);
+    break;
+case 3:
+    printf("%d heurs",annees*8760);
+    break;
+case 4:
+    printf("%d minutes",annees*525600);
+    break;
+case 5:
+    printf("%d millin secondes",annees*31536);
+    break;
+}
+
+    return 0;
+}

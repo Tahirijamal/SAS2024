@@ -1,0 +1,16 @@
+#include <stdio.h>
+#include <stdlib.h>
+int main() {
+float e ,s,p;
+printf("entre temperature est normal e");
+scanf("%d",&e);
+printf("entre temperature est normal s:");
+scanf("%d",&s);
+if (e==s){
+int  p=(e+s);}
+else
+    p=(e-s);
+printf("%f",&s);
+
+ return 0;
+}

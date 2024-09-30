@@ -1,0 +1,15 @@
+#include <stdio.h>
+#include <stdlib.h>
+int main() {
+    float a,b,s;
+printf("la valeur a:");
+scanf("%f",&a);
+printf("la valeur b:");
+scanf("%f",&b);
+   if 
+   ==b;
+   printf(s=(a+b)*3;
+    else
+    s=a+b;
+    return 0;
+}

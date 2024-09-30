@@ -1,0 +1,16 @@
+#include <stdio.h>
+#include <stdlib.h>
+int main() {
+int b,h,A,p;
+printf("entre la pase:",p);
+scanf("%d",&p);
+printf("entre la hauteur",h);
+scanf("%d",&h);
+p=4;
+h=5;
+A=(b*h)/2;
+b=3*h;
+printf("la sommer %d%d",A,b);
+
+ return 0;
+}

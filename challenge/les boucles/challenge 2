@@ -1,0 +1,14 @@
+#include <stdio.h>
+#include <stdlib.h>
+int main() {
+int P,i,n;
+printf("le valleurn de nomber n:");
+scanf("%d",&n);
+P=1;
+for(int i=1;i<=n;i++){
+P=P*i;
+}
+printf("la prouduit est: %d",P);
+
+ return 0;
+}

@@ -1,130 +1,152 @@
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
-typedef struct {
-    char nom[60];
-    char phone[90];
-    char email[40];
-}contact;
 
+struct reservation {
+    char nom[30];
+    char prenom[30];
+    char telephone[20];
+    int age;
+    char date[11];
+    char reference[8];
+      char statut[20];
+};
 
-contact contacts[200];
-  int totalcounte=0;
-   void ajoutecontact() {
-    printf("Entrez le nom:");
+struct reservation tab[200];
+int count = 0;
 
+void ajouter() {
+    printf("entrez votre nom: ");
+    scanf("%s", tab[count].nom);
+    printf("entrez votre prenom: ");
+    scanf("%s", tab[count].prenom);
+    printf("entrez votre numero: ");
+    scanf("%s", tab[count].telephone);
+    printf("entrer votre statut : ");
+    scanf("%s", tab[count].statut);
+    printf("quel age avez-vous? : ");
+    scanf("%d", &tab[count].age);
+    printf("entrez votre date de reservation au format dd-mm-yyyy: ");
+    scanf("%s", tab[count].date);
+    printf("entrez votre reference (C.I.N): ");
+    scanf("%s", tab[count].reference);
 
-    scanf("%s",contacts[totalcounte].nom);
-    printf("Entrez phone:");
-    scanf("%s",contacts[totalcounte].phone);
-    printf("Entrez email: ");
-    scanf("%s",contacts[totalcounte].email);
-   totalcounte++;
-    printf("contact ajoute");
-
-
-    };
-
-void   afficherlescontact() {
-    if (totalcounte == 0) {
-        printf("raine contact à afficher.\n");
-
-    }
-    printf(" Liste des contacts:\n");
-    for (int i = 0; i < totalcounte; i++) {
-        printf("Nom: %s, Téléphone: %s, email: %s\n",
- contacts[i].nom, contacts[i].phone, contacts[i].email);
-    }
+    printf("votre reservation a ete ajoute avec succes.\n");
+    count++;
 }
-void rechercheruncontact() {
-    char nom[60];
-    printf("Entrez le nom du contact à rechercher: ");
-    scanf("%s", nom);
-    for (int i = 0; i < totalcounte; i++) {
-        if (strcmp(contacts[i].nom, nom) == 0) {
-            printf("Contact trouvé: Nom: %s, phone: %s, email: %s\n",
-            contacts[i].nom, contacts[i].phone, contacts[i].email);
 
+void afficher() {
+    if (count == 0) {
+        printf("Aucune reservation a afficher.\n");
+    } else {
+        for (int i = 0; i < count; i++) {
+            printf("details de la reservation:\n");
+            printf("le nom: %s\n", tab[i].nom);
+            printf("le prenom: %s\n", tab[i].prenom);
+            printf("le numero: %s\n", tab[i].telephone);
+            printf("le statut: %s\n", tab[i].statut);
+            printf("votre age: %d\n", tab[i].age);
+            printf("la date de reservation: %s\n", tab[i].date);
+            printf("reference: %s\n", tab[i].reference);
+            printf("\n--------------------------------------\n\n");
         }
     }
-    printf("Contact non trouvé.\n");
 }
 
-void suppremecontact() {
-    char nom[60];
-    printf("Entrez le nom du contact à supprime: ");
-    scanf("%s", nom);
-    for (int i = 0; i < totalcounte; i++) {
-        if (strcmp(contacts[i].nom, nom) == 0) {
-            for (int j = i; j < totalcounte - 1; j++) {
-                contacts[j] = contacts[j + 1];
+void supprimer() {
+    char reference[8];
+    int found = 0;
+
+
+    printf("entrez la reference (C.I.N) de la reservation a supprimer: ");
+    scanf("%s", reference);
+
+    for (int i = 0; i < count; i++) {
+       if (strcmp(tab[i].reference, reference) == 0) {
+            found = 1;
+            for (int j = i; j < count - 1; j++) {
+                tab[j] = tab[j + 1];
             }
-           totalcounte--;
-            printf("Contact supprimé avec succès.\n");
-
-
-  }
-  }
-
-void modefy(){
-char nom[60];
-printf("entre le nom modefie");
-scanf("%s",nom);
-for(int i=0;i<=totalcounte;i++){
- if (strcmp(contacts[i].nom, nom) == 0) {
-
-printf("modifie le nomero de telephone");
-scanf("%s",contacts[i].phone);
-printf("modifie le email");
-scanf("%s",contacts [i].email);
-printf("Contact modifie  réussite!");
-
-}
-}
-printf("contact no trouve");
-
-}
-int main(){
-int choix;
-do{
-
-
-
-    printf("1. ajouter  contact\n");
-    printf("2. afficher les contacts\n");
-    printf("3. rechercher  contact\n");
-    printf("4. modifie un contact\n");
-    printf("5. supprimer un contact\n");
-    printf("6. exite\n");
-     printf("entrez votre choix \n");
-     scanf("%d",&choix);
-
-
-        switch(choix){
-
-           case 1:
-                ajoutecontact();
+            count--;
+            printf("reservation supprimee avec succes.\n");
             break;
-            case 2:
-                afficherlescontact();
+        }
+    }
+    if (!found) {
+        printf("reservation non trouvee.\n");
+    }
+}
+void trierparstatut() {
+    struct reservation temp;
+int option;
+printf("entre le type du triage:(1- par statut.\n");
+scanf("%d",&option);
+if (option==1){
+    for (int i = 0; i < count - 1; i++) {
+        for (int j = i + 1; j < count; j++) {
+            if (strcmp(tab[i].statut, tab[j].statut) > 0) {
+            temp = tab[j];
+                tab[j] = tab[i];
+                tab[i] = temp;
+            }
+        }
+    }
+ }
+
+    printf("reservations triees par statut avec succes.\n");
+}
+int dixreservation() {
+    char nom_dixreservation[10][20] = {"said", "ilyas", "hakimi", "hakim", "jamal", "fouad", "khadija", "zeneb", "malika", "imad"};
+    char prenom_dixreservation[10][20] = {"sammouni", "tahiri", "ziyach", "khadraoui", "kioui", "saad", "taoussi", "chkib", "zmalkaoui", "madridi"};
+    char telephon_dixreservation[10][14] = {"0123456789", "0624754321", "0678256789", "068725543", "0123456789", "0740954091", "0123456789", "9887438748", "0123456789", "98403484334"};
+    int age_dixreservation[10] = {22, 30, 25, 35, 22, 48, 28, 30, 29, 45};
+    char date_de_reservation_dixreservation[10][15] = {"01-01-2022", "02-01-2023", "03-01-2023", "04-01-2023", "05-01-2023", "06-01-2023", "07-01-2023", "08-01-2023", "09-01-2023", "10-01-2023"};
+    char statut_dixreservation[10][30] = {"valide" , "annule","reporte" , "valide","reporte","annule","valide","valide","annule","valide"};
+    for (int i = 0; i < 10; i++) {
+        strcpy(tab[i].nom, nom_dixreservation[i]);
+        strcpy(tab[i].prenom, prenom_dixreservation[i]);
+        strcpy(tab[i].telephone, telephon_dixreservation[i]);
+        strcpy(tab[i].statut, statut_dixreservation[i]);
+        tab[i].age = age_dixreservation[i];
+        strcpy(tab[i].date, date_de_reservation_dixreservation[i]);
+        snprintf(tab[i].reference, sizeof(tab[i].reference), "CIN%d", i + 1);
+    }
+    count = 10;
+}
+
+int main() {
+    dixreservation();
+    int choix;
+    while (1) {
+        printf("\n----- main menu -----\n");
+        printf("1. ajouter une reservation.\n");
+        printf("2. afficher les reservations.\n");
+        printf("3. modifier une reservation.\n");
+        printf("4. supprimer une reservation.\n");
+        printf("5. trier  une reservation.\n");
+        printf("6. xite\n");
+        printf("entre votre ou choix: ");
+        scanf("%d", &choix);
+
+        switch (choix) {
+            case 1:
+                ajouter();
                 break;
-            case 3:
-                  rechercheruncontact();
+            case 2:
+                afficher();
                 break;
             case 4:
-                modefy();
-            break;
-          case 5:
-               suppremecontact();
-                break;
-            case 6:
-                printf("MERCI BOUR VISIT");
+                supprimer();
                 break;
 
-            default:printf("Choix invalide. Veuillez ressayer.\n");
-
-        };
-    }while(choix!=6);
-
+            case 5 :
+                trierparstatut();
+                break ;
+                case 6:
+                printf("merci pour votre visite.\n");
+                return 0;
+            default:
+                printf("choix invalide, veuillez réessayer.\n");
+        }
+    }
     return 0;
 }
